@@ -1,0 +1,8 @@
+# Dockerfile
+
+# Usa la imagen oficial de PostgreSQL
+FROM postgres:latest
+
+# Copia el script SQL al directorio de entrada de inicialización de la base de datos
+COPY ./migrations/docker-entrypoint-initdb.d/. /docker-entrypoint-initdb.d/.
+RUN chmod a+r /docker-entrypoint-initdb.d/data/*
